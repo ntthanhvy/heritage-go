@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Héritage GO is the community for heritage lovers.">
+    <title>Héritage GO</title>
+
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+    <!-- jquery -->
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+
+    <!-- fontawesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+    <!-- favicon -->
+    <link rel="shortcut icon" href="../static/logo.png">
+
+    <!-- custom stylesheet -->
+    <link rel="stylesheet" href="../static/style.css">
+    
+
+</head>
+<body>
+    <header>
+        <div class="col-8 header-body">
+            <img src="../static/logo.3.0_large.png" alt="logo" class="logo-img">
+            <ul>
+                <li class="primary">Ho Chi Minh
+                    <span class="icon"><i class="far fa-compass"></i></span>
+                </li>
+                <li class="secondary">Vietnam</li>
+            </ul>
+        </div>
+        <div class="col-2 login-button">
+            <button type="button" class="btn login-btn" data-toggle="modal" data-target="#loginModal">
+                Log In
+            </button>
+        </div>
+    </header>
+    <div class="modal fade align-self-center" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="loginModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content ">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="loginModalLabel">Log In</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form method="POST">
+                    <div class="modal-body">
+                        <div class="login-label">
+                            <input placeholder="Username" type="text" class="mb-3 login-input" id="username" name="username">
+                            <label for="username">Username</label>
+                        </div>
+                        <div class="login-label input-pass">
+                            <input placeholder="Password" type="password" class="login-input" id="password" name="password">
+                            <label for="password">Password</label>
+                            <span toggle="#password" class="fas fa-fw fa-lock toggle-icon" id="toggle-password"></i></span>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary col-12 text-light text-center">LOGIN</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <main class="container">
+        <div class="picture col-8" id="picture">
+            <div class="mt-5">
+                <div class="card">
+                    <div class="card-header d-flex flex-row ">
+                        <div class="avatar mr-3">
+                            <img src="#" alt="avatar" class="rounded-0 avatar-img">
+                        </div>
+                        <div class="img-info">
+                            <div class="mb-3">
+                                <h5 class="img-description">Image number 1</h6>
+                            </div>
+                            <div class="d-flex justify-content-between mb-0">
+                                <span class="fas fa-map-marker-alt mr-1"></span> <p class="img-location mr-4 mb-0"> hoi an/hue</p>
+                                <span class="far fa-clock mr-1"></span><p class="img-time mb-0"> 1925</p>
+                            </div>
+                        </div>
+                        <span class="translate-icon ml-auto"><img src="../static/translate.png" alt="translate-ison" class=""></span>
+                    </div>
+                    <div class="card-body p-0">
+                        <img src="#" alt="image" class="m-0 card-img rounded-0 main-img">
+                    </div>
+                    <div class="card-footer">
+                        <div class="interact d-flex justify-content-start  mb-0">
+                            <div class="like mr-3">
+                                <p class="mb-0"><span class="fas fa-heart "></span> 0</p>
+                            </div>
+                            <div class="comment mr-3">
+                                <p class="mb-0"><span class="fas fa-comment"></span> 0</p>
+                            </div>
+                            <div class="camera mr-3">
+                                <p class="mb-0"><span class="fas fa-camera"></span> 0</p>
+                            </div>
+                            <div class="markbook ml-auto">
+                                <span class="fas fa-bookmark"></span>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="cmt-area">
+                            <form method="POST">
+                                <input type="text" class="cmt-input" placeholder="Write a comment">
+                                <button type="submit" class="btn cmt-btn"><span class="fab fa-telegram-plane cmt-send"></span></button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="mt-5">
+        <div>
+            <h6 class="text-muted text-center"> C INTEKER 2019</h5>
+        </div>
+    </footer>
+
+    <!-- js script -->
+    <script src="../js/index.js" type="text/javascript"></script>
+    <script src="../js/heritagego-service.1.0.0.js"></script>
+</body>
+</html>
