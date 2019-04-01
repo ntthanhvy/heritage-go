@@ -15,7 +15,7 @@
  * FITNESS FOR A PARTICULAR PURPOSE, OR NON-INFRINGEMENT.  INTEK
  * INSTITUTE SHALL NOT BE LIABLE FOR ANY LOSSES OR DAMAGES SUFFERED BY
  * LICENSEE AS A RESULT OF USING, MODIFYING OR DISTRIBUTING THIS
- * SOFTWARE OR ITS DERIVATIVES.
+ * SOFTWARE OR ITS DERIVATIVES. 
  */
 
 const HERITAGE_GO_CONSUMER_KEY = 'dfe1c4ece18011e7b6f10008a20c190f';
@@ -91,7 +91,7 @@ HeritageGoService.prototype.getPhoto = function(photoId, options) {
         resolve(payload);
       },
       type: 'GET',
-      url: 'https://api.heobs.org/photo/' + photoId
+      url: 'http://api.heobs.org/photo/' + photoId
     });
   });
 }
@@ -170,7 +170,7 @@ HeritageGoService.prototype.getPhotos = function(options) {
         resolve(payload);
       },
       type: 'GET',
-      url: 'https://api.dev.heritagego.org/photo'
+      url: 'http://api.dev.heritagego.org/photo'
     });
   });
 }
@@ -205,7 +205,7 @@ HeritageGoService.prototype.suggestPhotoCaption = function(photoId, caption, loc
       crossOrigin: true,
       crossDomain: true,
       data: {
-        caption: caption,
+        content: caption,
         locale: locale
       },
       dataType: 'json',
@@ -221,7 +221,7 @@ HeritageGoService.prototype.suggestPhotoCaption = function(photoId, caption, loc
         resolve(payload);
       },
       type: 'POST',
-      url: 'https://api.heobs.org/photo/' + photoId + '/caption'
+      url: 'http://api.heobs.org/photo/' + photoId + '/caption'
     });
   });
 }
