@@ -1,3 +1,25 @@
+// global variable
+const LANGUAGE_FROM_ISO_639_TO_ISO_639_ALPHA_3 = {
+    "aa": "DJ", "af": "ZA", "ak": "GH", "sq": "AL", "am": "ET", "ar": "AA", "hy": "AM",
+    "ay": "WH", "az": "AZ", "bm": "ML", "be": "BY", "bn": "BD", "bi": "VU", "bs": "BA",
+    "bg": "BG", "my": "MM", "ca": "AD", "zh": "CN", "hr": "HR", "cs": "CZ", "da": "DK",
+    "dv": "MV", "nl": "NL", "dz": "BT", "en": "GB", "et": "EE", "ee": "EW", "fj": "FJ",
+    "fil": "PH", "fi": "FI", "fr": "FR", "ff": "FF", "gaa": "GH", "ka": "GE", "de": "DE",
+    "el": "GR", "gn": "GX", "gu": "IN", "ht": "HT", "ha": "HA", "he": "IL", "hi": "IN",
+    "ho": "PG", "hu": "HU", "is": "IS", "ig": "NG", "id": "ID", "ga": "IE", "it": "IT",
+    "ja": "JP", "kr": "NE", "kk": "KZ", "km": "KH", "kmb": "AO", "rw": "RW", "kg": "CG",
+    "ko": "KR", "kj": "AO", "ku": "IQ", "ky": "KG", "lo": "LA", "la": "VA", "lv": "LV",
+    "ln": "CG", "lt": "LT", "lu": "CD", "lb": "LU", "mk": "MK", "mg": "MG", "ms": "MY",
+    "mt": "MT", "mi": "NZ", "mh": "MH", "mn": "MN", "mos": "BF", "ne": "NP", "nd": "ZW",
+    "nso": "ZA", "no": "NO", "nb": "NO", "nn": "NO", "ny": "MW", "pap": "AW", "ps": "AF",
+    "fa": "IR", "pl": "PL", "pt": "PT", "pa": "IN", "qu": "WH", "ro": "RO", "rm": "CH",
+    "rn": "BI", "ru": "RU", "sg": "CF", "sr": "RS", "srr": "SN", "sn": "ZW", "si": "LK",
+    "sk": "SK", "sl": "SI", "so": "SO", "snk": "SN", "nr": "ZA", "st": "LS", "es": "ES",
+    "sw": "SW", "ss": "SZ", "sv": "SE", "tl": "PH", "tg": "TJ", "ta": "LK", "te": "IN",
+    "tet": "TL", "th": "TH", "ti": "ER", "tpi": "PG", "ts": "ZA", "tn": "BW", "tr": "TR",
+    "tk": "TM", "uk": "UA", "umb": "AO", "ur": "PK", "uz": "UZ", "ve": "ZA", "vi": "VN",
+    "cy": "GB", "wo": "SN", "xh": "ZA", "yo": "YO", "zu": "ZA"
+}
 
 
 /*
@@ -6,7 +28,6 @@
 */
 $("#toggle-password").on("click", function () {
     $(this).toggleClass("fa-lock fa-unlock-alt");
-    console.log(1);
     var input = $($(this).attr("toggle"));
     if (input.attr("type") === "password") {
         input.attr("type", "text");
@@ -54,6 +75,44 @@ const getPhoto = (photoNum) => {
                 };
                 content.find('.main-img').prop("src", "http:" + photo.image_url + "?size=large");
                 content.appendTo($(".container"));
+
+                // translate the caption of the photo
+                let photoId = '', caption = "", locale = "";
+                let transIcon = content.find($(".translate-icon"));
+                $(transIcon).click(function () {
+                    console.log(1);
+                    $(transIcon).removeClass("skake-icon");
+                    let langChoice = $(".language-choice")
+                    $(langChoice).click(function (item) {
+                        console.log(2);
+                        item.preventDefault();
+                        let lang = item.target.text
+                        if (lang === "English") {
+                            locale = "eng";
+                               $(transIcon).removeClass("translate-icon");
+                        $(transIcon).addClass("translate-language");
+                        $(transIcon).text(lang);
+                        content.find($(".img-description")).css("display", "none");
+                        content.find($(".input-language")).css("display", "block");
+
+                        let newCaption = content.find($(".input-language"));
+                        newCaption.submit(function (inp) {
+                            // inp.preventDefault();
+                            console.log(3)
+                            let photoId = photo.photo_id;
+                            let caption = $(newCaption).find($("input")).val();
+                            mHeritageGoService.suggestPhotoCaption(photoId, caption, locale).catch(error => { console.log(error) });
+
+                            $(transIcon).addClass("translate-icon");
+                            $(transIcon).removeClass("translate-language");
+                            $(transIcon).text("");
+
+                            content.find($(".img-description")).css("display", "block");
+                            content.find($(".input-language")).css("display", "none");
+                        })
+                    })
+                })
+
             }).catch(error => { console.log(error) });
         });
     }).catch(error => { console.log(error) });
@@ -67,7 +126,7 @@ const getPhoto = (photoNum) => {
 */
 
 $(window).scroll(() => {
-    $('.header-body').css({'opacity': '.75'});
+    $('.header-body').css({ 'opacity': '.75' });
 })
 
 $(document).scroll(function () {
@@ -90,13 +149,5 @@ $(function () {
 
 /*
     Change the photo's caption's language
-    By using Heritage-GO observatory API 
+    By using Heritage-GO observatory API
 */
-
-let photoId = "dd06abcc-f812-11e7-9de2-0007cb040bcc",
-caption = "Khach san Majestic - Sai Gon",
-locale = "vie";
-
-$(function() {
-    mHeritageGoService.suggestPhotoCaption(photoId, caption, locale).catch(error => {console.log(error)});
-});

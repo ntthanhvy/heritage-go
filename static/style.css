@@ -1,14 +1,12 @@
 /* -----------general setting-------------------- */
+
 * {
     margin: 0;
     padding: 0;
-
 }
 
-
-
-
 /* ----------header element------------- */
+
 header {
     height: 80px;
     width: 100%;
@@ -21,7 +19,9 @@ header {
     border-bottom: 1px solid rgba(0, 0, 0, .0975);
     overflow: hidden;
     position: fixed;
-    top: 0; right: 0; left: 0;
+    top: 0;
+    right: 0;
+    left: 0;
     z-index: 99;
 }
 
@@ -30,7 +30,10 @@ header::after {
     position: absolute;
     display: block;
     content: '';
-    top: 0; right: 0; bottom: 0; left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
     z-index: 4;
 }
 
@@ -42,19 +45,23 @@ header::after {
     font-size: 14px;
 }
 
-
 /* -------------customize header element-------------- */
+
 /* header body */
+
 .header-body {
     width: 100%;
     position: absolute;
     z-index: 6;
-    top: 0; bottom: 0; left: 0; right: 0;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
     margin: 24px;
     padding-right: 24px;
     display: flex;
     flex-direction: row;
-    align-items: center; 
+    align-items: center;
 }
 
 .header-navigation {
@@ -65,7 +72,7 @@ header::after {
     padding: 0;
 }
 
-.header-navigation > ul{
+.header-navigation>ul {
     margin-left: auto;
     display: flex;
     list-style: none;
@@ -75,43 +82,47 @@ header::after {
     font-family: Arial;
 }
 
-
 /* compass icon */
+
 .icon {
     align-self: start;
     font-size: 24px;
     margin: 3px;
 }
 
-.icon > i {
+.icon>i {
     width: 24px;
     height: 24px;
     -webkit-animation: rotate-center 4s linear infinite both;
-	        animation: rotate-center 4s linear infinite both;
+    animation: rotate-center 4s linear infinite both;
 }
+
 /* animation for compass icon */
+
 @-webkit-keyframes rotate-center {
     0% {
-      -webkit-transform: rotate(0);
-              transform: rotate(0);
-    }
-    100% {
-      -webkit-transform: rotate(360deg);
-              transform: rotate(360deg);
-    }
-}
-@keyframes rotate-center {
-    0% {
         -webkit-transform: rotate(0);
-                transform: rotate(0);
+        transform: rotate(0);
     }
     100% {
         -webkit-transform: rotate(360deg);
-                transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes rotate-center {
+    0% {
+        -webkit-transform: rotate(0);
+        transform: rotate(0);
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
     }
 }
 
 /* logo image */
+
 .logo-img {
     max-width: 100px;
     max-height: 80px;
@@ -130,6 +141,7 @@ header::after {
 }
 
 /* login button */
+
 .login-button {
     width: 25%;
     margin-right: 24px;
@@ -151,26 +163,26 @@ header::after {
 }
 
 /* login dialog */
+
 .login-label {
     display: flex;
     flex-flow: column-reverse;
     margin-bottom: 1em;
-  }
+}
 
-
-
-  /**
+/**
   * Add a transition to the label and input.
   * I'm not even sure that touch-action: manipulation works on
   * inputs, but hey, it's new and cool and could remove the 
   * pesky delay.
   */
-  .login-label > label, .login-label > input {
+
+.login-label>label, .login-label>input {
     transition: all 0.2s;
     touch-action: manipulation;
-  }
-  
-  .login-input {
+}
+
+.login-input {
     font-size: 18px;
     border: 0;
     border-bottom: 1px solid #ccc;
@@ -179,23 +191,25 @@ header::after {
     border-radius: 0;
     padding: 0;
     cursor: text;
-  }
-  
-  .login-input:focus {
+}
+
+.login-input:focus {
     outline: 0;
     border-bottom: 1.5px solid #000000;
-  }
-  
-  .login-label > label {
+}
+
+.login-label>label {
     letter-spacing: 0.05em;
-  }
-  /**
+}
+
+/**
   * Translate down and scale the label up to cover the placeholder,
   * when following an input (with placeholder-shown support).
   * Also make sure the label is only on one row, at max 2/3rds of the
   * field—to make sure it scales properly and doesn't wrap.
   */
-  .login-input:placeholder-shown + label {
+
+.login-input:placeholder-shown+label {
     cursor: text;
     max-width: 66.66%;
     white-space: nowrap;
@@ -203,55 +217,64 @@ header::after {
     text-overflow: ellipsis;
     transform-origin: left bottom;
     transform: translate(0, 2.125rem) scale(1.5);
-  }
-  /**
+}
+
+/**
   * the placeholder is transparent. Also, it should 
   * inherit the transition.
   */
-  .login-input::-webkit-input-placeholder {
+
+.login-input::-webkit-input-placeholder {
     opacity: 0;
     transition: inherit;
-  }
-  /**
+}
+
+/**
   * Show the placeholder when the input is focused.
   */
-  .login-input:focus::-webkit-input-placeholder {
+
+.login-input:focus::-webkit-input-placeholder {
     opacity: 1;
-  }
-  /**
+}
+
+/**
   * When the element is focused, remove the label transform.
   * Also, do this when the placeholder is _not_ shown, i.e. when 
   * there's something in the input at all.
   */
-  .login-input:not(:placeholder-shown) + label, .login-input:focus + label {
+
+.login-input:not(:placeholder-shown)+label, .login-input:focus+label {
     transform: translate(0, 0) scale(1);
     cursor: pointer;
-  }
+}
 
-  /* password toggle icon */
-  .toggle-icon {
-      float: right;
-      margin-left: 90%;
-      padding-bottom: 10px;
-      position: absolute;
-      z-index: 2;
-  }
+/* password toggle icon */
 
-  .toggle-icon:hover {
-      cursor: pointer;
-  }
+.toggle-icon {
+    float: right;
+    margin-left: 90%;
+    padding-bottom: 10px;
+    position: absolute;
+    z-index: 2;
+}
 
-  header > .container {
-      position: relative;
-      z-index: 3;
-  }
+.toggle-icon:hover {
+    cursor: pointer;
+}
+
+header>.container {
+    position: relative;
+    z-index: 3;
+}
 
 /* -----------body----------------- */
+
 main {
     margin-top: 200px;
 }
 
 /* card header */
+
 .picture {
     margin: auto;
     margin-bottom: 24px;
@@ -272,11 +295,85 @@ main {
 }
 
 .translate-icon {
+    background: url('./translate.png');
+    background-size: 25px;
+    width: 25px;
     height: 25px;
     border: 0;
 }
 
-.translate-icon > img {
+.translate-language {
+    background: transparent;
+    width: inherit;
+    height: auto;
+    border: 0;
+}
+
+
+.skake-icon {
+    -webkit-animation: skake-icon 0.5s linear infinite both;
+    animation: skake-icon 0.5s linear infinite both;
+}
+/* skake translate icon */
+
+@-webkit-keyframes skake-icon {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    25% {
+        -webkit-transform: rotate(45deg);
+        transform: rotate(45deg);
+    }
+    50% {
+        -webkit-transform: rotate(0);
+        transform: rotate(0);
+    }
+    75% {
+        -webkit-transform: rotate(-45deg);
+        transform: rotate(-45deg);
+    }
+    100% {
+        -webkit-transform: rotate(0);
+        transform: rotate(0);
+    }
+}
+
+@keyframes skake-icon {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    25% {
+        -webkit-transform: rotate(45deg);
+        transform: rotate(45deg);
+    }
+    50% {
+        -webkit-transform: rotate(0);
+        transform: rotate(0);
+    }
+    75% {
+        -webkit-transform: rotate(-45deg);
+        transform: rotate(-45deg);
+    }
+    100% {
+        -webkit-transform: rotate(0);
+        transform: rotate(0);
+    }
+}
+
+.dropdown-menu {
+    width: 30px;
+    z-index: 3;
+}
+
+.dropdown-content {
+    width: 100%;
+    padding: 0 10px;
+    margin: 0;
+}
+
+.dropdown-content > img {
     width: 25px;
 }
 
@@ -296,9 +393,11 @@ main {
     opacity: 1;
     transition: inherit;
 }
-  /**
+
+/**
   * Show the placeholder when the input is focused.
   */
+
 .cmt-input:focus::-webkit-input-placeholder {
     opacity: 1;
 }
@@ -320,25 +419,23 @@ main {
 }
 
 /* ------------the picture feed---------------- */
+
 main {
     margin-top: 100px;
 }
 
 /* --------responsive css--------------- */
-@media screen and (max-width: 992px) {
 
+@media screen and (max-width: 992px) {
     .col-8 {
         max-width: 90%;
     }
-
 }
-
 
 @media screen and (max-width: 768px) {
     .col-8 {
         max-width: 100%;
     }
-
     .logo-img {
         margin: 24px;
     }
