@@ -61,7 +61,7 @@ const getPhoto = (photoNum) => {
             let content = defaultContent.clone();
             photoInfo = mHeritageGoService.getPhoto(photo).then(photo => {
                 console.log(photo);
-                content.find(".avatar-img").prop("src", "http:" + photo.account.picture_url).attr("alt", photo.account.fullname);
+                content.find(".avatar-img").prop("src", "https:" + photo.account.picture_url).attr("alt", photo.account.fullname);
                 content.find(".img-description").html(photo.title[0].content);
                 content.find(".img-location").html(photo.area_name.trim());
                 if (photo.capture_time) {
@@ -73,7 +73,7 @@ const getPhoto = (photoNum) => {
                         "undefine"
                     );
                 };
-                content.find('.main-img').prop("src", "http:" + photo.image_url + "?size=large");
+                content.find('.main-img').prop("src", "https:" + photo.image_url + "?size=large");
                 content.appendTo($(".container"));
 
                 // translate the caption of the photo
