@@ -89,7 +89,10 @@ const getPhoto = (photoNum) => {
                         let lang = item.target.text
                         if (lang === "English") {
                             locale = "eng";
-                               $(transIcon).removeClass("translate-icon");
+                        } else if (lang === "Vietnamese") {
+                            locale = 'vie'
+                        }
+                        $(transIcon).removeClass("translate-icon");
                         $(transIcon).addClass("translate-language");
                         $(transIcon).text(lang);
                         content.find($(".img-description")).css("display", "none");
