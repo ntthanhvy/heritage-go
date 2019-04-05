@@ -100,7 +100,7 @@ const getPhoto = (photoNum) => {
 
                         let newCaption = content.find($(".input-language"));
                         newCaption.submit(function (inp) {
-                            // inp.preventDefault();
+                            inp.preventDefault();
                             console.log(3)
                             let photoId = photo.photo_id;
                             let caption = $(newCaption).find($("input")).val();
